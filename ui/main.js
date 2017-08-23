@@ -15,4 +15,6 @@ button.onclick = function() {
            }
        } 
     };
+    request.open('GET','http://u15eumt036.imad.hasura-app.io/counter',true);
+    request.send(null);
 };
