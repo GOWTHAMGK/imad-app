@@ -22,7 +22,7 @@ app.get('/counter', function (req, res) {
   res.send(counter.toString());
 });
 var pool = new pool(config);
-app.get('/text', function (req, res){
+app.get('/text-db', function (req, res){
     pool.quary('SELECT* from text',function (req, res){
     if(err){
         res.status(500),send(err.toString());
