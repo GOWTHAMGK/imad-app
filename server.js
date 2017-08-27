@@ -1,8 +1,15 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
-
+var pool = require('pg').pool;
 var app = express();
+var config={
+    user:'u15eumt036',
+    database:'u15eumt036',
+    host:'db.hasura-app.io',
+    port:'5432',
+    password:process.env.DB_PASSWORD
+};
 app.use(morgan('combined'));
 
 app.get('/', function (req, res) {
@@ -13,6 +20,16 @@ var counter =0;
 app.get('/counter', function (req, res) {
   counter=counter + 1;  
   res.send(counter.toString());
+});
+var pool = new pool(config);
+app.get('/text', function (req, res){
+    pool.quary('SELECT* from text',function (req, res){
+    if(err){
+        res.status(500),send(err.toString());
+    }else{
+        res.send(JSON.stringfy(result));
+    }
+    });
 });
 
 app.get('/article-one', function(req,res) {
