@@ -39,7 +39,7 @@ function hash (input,salt){
 
 app.get('/hash/:input',function (req, res){
     var hashedString = (req.params.input,'this-is-some-random-string');
-    res.send(hashedStiring);
+    res.send(hashedString);
 });
 
 app.get('/article-one', function(req,res) {
